@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, Get, Query, Param } from '@nestjs/common';
 import { MusicsService } from './musics.service';
 import { CreateMusicDTO } from './dto/create-music.dto';
 
@@ -9,5 +9,15 @@ export class MusicsController {
   @Post('')
   create(@Body() createMusicDTO: CreateMusicDTO) {
     return this.musicsService.create(createMusicDTO);
+  }
+
+  @Get('')
+  findAll(@Query('group') group: string | undefined) {
+    return this.musicsService.findAll(group);
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.musicsService.findOne(id);
   }
 }
