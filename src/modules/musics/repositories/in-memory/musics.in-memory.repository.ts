@@ -12,6 +12,8 @@ export class MusicsInMemoryRepository implements MuscisRepository {
     const newMusic = new Music();
     Object.assign(newMusic, {
       ...data,
+      cover_image: data.cover_image || null,
+      music_url: data.music_url || null,
     });
 
     this.database.push(newMusic);
