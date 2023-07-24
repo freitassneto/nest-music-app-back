@@ -8,7 +8,7 @@ import { PrismaService } from 'src/database/prisma.service';
 @Injectable()
 export class MusicsPrismaRepository implements MuscisRepository {
   constructor(private prisma: PrismaService) {}
-  async create(data: CreateMusicDTO): Promise<Music> {
+  async create(data: CreateMusicDTO, userId: string): Promise<Music> {
     const music = new Music();
     Object.assign(music, {
       ...data,
@@ -24,7 +24,7 @@ export class MusicsPrismaRepository implements MuscisRepository {
         year: music.year,
         cover_image: music.cover_image,
         music_url: music.music_url,
-        userId: music.user_id,
+        userId,
       },
     });
     return newMusic;
