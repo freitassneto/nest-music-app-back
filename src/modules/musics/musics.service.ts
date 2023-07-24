@@ -5,8 +5,8 @@ import { MuscisRepository } from './repositories/music.repository';
 @Injectable()
 export class MusicsService {
   constructor(private musicRepository: MuscisRepository) {}
-  async create(createMusicDTO: CreateMusicDTO) {
-    const music = await this.musicRepository.create(createMusicDTO);
+  async create(createMusicDTO: CreateMusicDTO, userId: string) {
+    const music = await this.musicRepository.create(createMusicDTO, userId);
     return music;
   }
 
