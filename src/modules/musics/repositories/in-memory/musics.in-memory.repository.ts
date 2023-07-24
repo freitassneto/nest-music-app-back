@@ -8,10 +8,11 @@ import { Music } from '../../entities/music.entity';
 @Injectable()
 export class MusicsInMemoryRepository implements MuscisRepository {
   private database: Music[] = [];
-  async create(data: CreateMusicDTO): Promise<Music> {
+  async create(data: CreateMusicDTO, userId: string): Promise<Music> {
     const newMusic = new Music();
     Object.assign(newMusic, {
       ...data,
+      userId: userId,
       cover_image: data.cover_image || null,
       music_url: data.music_url || null,
     });
