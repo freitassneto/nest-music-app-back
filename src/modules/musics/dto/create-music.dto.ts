@@ -66,5 +66,6 @@ export class CreateMusicDTO {
   })
   @IsString()
   @IsNotEmpty()
+  @IsOptional()
   music_url: string | null;
 }
